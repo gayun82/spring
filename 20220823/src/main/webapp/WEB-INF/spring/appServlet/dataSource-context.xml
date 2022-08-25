@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- DBCP configuration --><!--환경설정  -->
+	<bean class="com.zaxxer.hikari.HikariConfig" id="hikariConfig">
+      <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+      <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+      <property name="username" value="micol"/>
+      <property name="password" value="1234"/>
+   </bean>
+	<!--데이터 소스 (DAO) 자동연결  -->
+	<bean class="com.zaxxer.hikari.HikariDataSource" id="dataSource" destroy-method="close">
+		<constructor-arg ref="hikariConfig"/>
+	</bean>
+		<!--mybatis Configuration  -->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<!-- <property name="configLocation" value="classpath:mybatisConfig/mybatis-config.xml"></property>
+		<property name="mapperLocations" value="classpath*:co/micol/prj/**/map/*-map.xml"></property>	 -->
+	</bean>
+	
+	<mybatis-spring:scan base-package="co.micol.prj.**.map"/><!--모든 패키지 밑에 맵퍼에서 스캔해라  -->
+	
+</beans>
