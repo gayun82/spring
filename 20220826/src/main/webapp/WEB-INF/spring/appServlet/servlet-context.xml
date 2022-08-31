@@ -22,9 +22,9 @@
 	</beans:bean><!-- 뷰 리졸브 -->
 	
 	<!--서블릿 컨텍스트는 beans:beans로 만들어야함  -->
+		
 	
 	<context:component-scan base-package="co.micol.prj" /><!-- 컨퍼런트 스캔 -->
-	
 	
 	
 </beans:beans>

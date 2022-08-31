@@ -90,21 +90,21 @@
 	/*  function searchCall(){//ajax 검색처리
 		 let key = document.getElementById('key').value;
 		 let val = document.getElementById('val').value;
-		 
+		 let payMent = {key : key, val : val}
 		 fetch("ajaxSearch.do",{
 			 method      : 'post',
 			 headers :{
 				 'Content-Type' : 'application/x-www-form-urlencoded',
 			 },
 			 body     : "key="+key+"&val="+val
-		 }).then(response => response.json())//결과를 제이슨타입으로 변환
-		   .then((date) => htmlView(date)) //html convert method가 필요하다
+		 }).then(response => response.json())  //결과를 제이슨타입으로 변환
+		   .then((date) => htmlView(date))   //html convert method가 필요하다
 	 }  */
 			//json형태로 값을 전달할 때	
 		/* 	headers:{
 				'Content-Type' : 'application/json',
 			},
-			body : JSON.stringify({'key':key, 'val':val}) */
+			body : JSON.stringify(payMent) */ // 잘안됨
 	
 	 
 	  function searchCall(){
